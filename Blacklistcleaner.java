@@ -62,8 +62,9 @@ public class Blacklistcleaner {
 				e.printStackTrace();
 			} 
 			//System.out.println(blackListDomainfolder.get(a));
-			int j=0;
-			int i=0;
+			int i ,j ;
+			i =0; j=0;
+		
 			//System.out.println("i :" + i);
 			//System.out.println("j: "+ j);
 			//iterates over the list in the blacklist domain files
@@ -75,16 +76,15 @@ public class Blacklistcleaner {
 				int result = sort (seedListArray.get(i), blackListArray.get(j));
 				//System.out.println(result);
 				if (result >0){
-					j=j+1;
+					j++;
 				}
 				else if (result <0){	 
-					i=i+1; 
+					i++; 
 				}
 				else if (result ==0 ){
 					removeSeed.add(seedListArray.get(i));
 					//System.out.println(seedListArray.get(i));
-					i=i+1;
-					j=j+1;		
+					i++; j++;		
 				}
 
 
