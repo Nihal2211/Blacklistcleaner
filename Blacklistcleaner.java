@@ -17,7 +17,7 @@ public class Blacklistcleaner {
 		//System.out.println(s2);
 		return s1.compareToIgnoreCase(s2);
 	}
-	static int i;
+	
 
 	public static void printer (String args) {
 
@@ -38,15 +38,19 @@ public class Blacklistcleaner {
 		} 
 		Collections.sort(seedListArray); //sorting the seedlist
 
-		ArrayList<String> blackListArray = new ArrayList<String>();
+		
 		ArrayList<String> blackListDomainfolder= new ArrayList<String>();
-		ArrayList<String> removeSeed = new ArrayList<String>();
+		
 		File directory = new File(args);
 		for (final File file : directory.listFiles()) {
-			System.out.println(file);
+			//System.out.println(file.getName());
 			blackListDomainfolder.add("/home/qu/Desktop/Blacklist/" + file.getName());
 		}
+		
 		for (int a =0 ; a < blackListDomainfolder.size(); a ++){
+			//System.out.println(blackListDomainfolder.size());
+			ArrayList<String> removeSeed = new ArrayList<String>();
+			ArrayList<String> blackListArray = new ArrayList<String>();
 			try (BufferedReader br = new BufferedReader(new FileReader(blackListDomainfolder.get(a))))
 			{
 				String line;
@@ -57,13 +61,17 @@ public class Blacklistcleaner {
 			catch (IOException e) {
 				e.printStackTrace();
 			} 
+			//System.out.println(blackListDomainfolder.get(a));
 			int j=0;
+			int i=0;
+			//System.out.println("i :" + i);
+			//System.out.println("j: "+ j);
 			//iterates over the list in the blacklist domain files
 			while (i <= seedListArray.size()-1 && j <= blackListArray.size()-1){
-				//System.out.println("i" + i + "j" + j);
-				//System.out.println("blacklist size" + blackListArray.size());
-				//.out.println("seedlist size" + seedListArray.size());
-
+				/*System.out.println("i" + i + "j" + j + "a"+a);
+				System.out.println("seedlistword" + seedListArray.get(i));
+				System.out.println("seedlist size" + seedListArray.size());
+				System.out.println("blacklistword" + blackListArray.get(j));*/
 				int result = sort (seedListArray.get(i), blackListArray.get(j));
 				//System.out.println(result);
 				if (result >0){
@@ -81,8 +89,9 @@ public class Blacklistcleaner {
 
 
 			}
+			seedListArray.removeAll(removeSeed);//cleaning seedlist
 		}
-		seedListArray.removeAll(removeSeed);//cleaning seedlist
+		
 
 
 		// write the final seed list to a text file
