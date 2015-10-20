@@ -68,7 +68,7 @@ public class Blacklistcleaner {
 			//System.out.println("i :" + i);
 			//System.out.println("j: "+ j);
 			//iterates over the list in the blacklist domain files
-			while (i <= seedListArray.size()-1 && j <= blackListArray.size()-1){
+			while (i < seedListArray.size() && j < blackListArray.size()){
 				/*System.out.println("i" + i + "j" + j + "a"+a);
 				System.out.println("seedlistword" + seedListArray.get(i));
 				System.out.println("seedlist size" + seedListArray.size());
