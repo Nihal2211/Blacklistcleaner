@@ -18,7 +18,7 @@ public class Blacklistcleaner {
 		return s1.compareToIgnoreCase(s2);
 	}
 	
-
+    
 	public static void printer (String args) {
 
 
@@ -110,7 +110,7 @@ public class Blacklistcleaner {
 		} 
 	}
 	public static void main(String[] args) {
-
+       
 		printer("/home/qu/Desktop/Blacklist"); // passing a directory which contains files of blacklists sorted by categories
 	}
 
